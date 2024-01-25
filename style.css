@@ -206,8 +206,14 @@ header.shadow {
 .products-container {
     margin-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+    grid-template-columns: repeat(auto-fit, minmax(250px, auto));
     gap: 20px;
+}
+
+@media screen and (min-width: 480px) {
+    .products-container {
+        grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+    }
 }
 
 .products-container .box {
@@ -451,6 +457,11 @@ header.shadow {
     .about {
         align-items: center;
     }
+
+    .home-img {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 @media (max-width: 360px) {
@@ -464,10 +475,15 @@ header.shadow {
 
     .home-text {
         padding-top: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        align-items: center;
     }
 
     .home-text h1 {
         font-size: 1.4rem;
+        text-align: center;
     }
 
     .home-text p {
