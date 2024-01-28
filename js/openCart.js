@@ -152,6 +152,8 @@ const changeQuantity = (product_id, type) => {
           carts[positionItemtInCart].quantity = valueChange;
         } else {
           carts.splice(positionItemtInCart, 1);
+          totalSumm.textContent = 0;
+          cartCount.classList.remove("active");
         }
         break;
     }
