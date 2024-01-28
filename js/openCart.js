@@ -1,8 +1,8 @@
 const openCartBtn = document.getElementById("open-cart");
 const cartOverlay = document.getElementById("cartOverlay");
 
-// const closeCartBtn = document.getElementById("close-cart");
-// closeCartBtn.addEventListener("click", toggleCart);
+const closeCartBtn = document.getElementById("close-cart");
+closeCartBtn.addEventListener("click", toggleCart);
 
 function toggleCart() {
   cartOverlay.classList.toggle("active");
@@ -28,6 +28,7 @@ function closeModal(ev) {
 const cartCount = document.querySelector(".cart-count");
 // const buyButton = document.getElementById('cart_btn');
 const totalSumm = document.querySelector(".total-summ");
+const totalBox = document.querySelector(".total-box");
 const listCartHTML = document.querySelector(".cart");
 const iconCart = document.getElementById("open-cart");
 let carts = [];
@@ -111,10 +112,11 @@ const addCartToHTML = () => {
 <p>Price</p>
 <p class="item-price">${info.price * cart.quantity}</p>
   <span class="minus">-</span>
-  <span>${cart.quantity}</span>
+  <span class="cart-quantity">${cart.quantity}</span>
   <span class="plus">+</span>
 `;
       listCartHTML.appendChild(newCart);
+      totalBox.classList.add("active");
     });
   }
 };
@@ -154,6 +156,7 @@ const changeQuantity = (product_id, type) => {
           carts.splice(positionItemtInCart, 1);
           totalSumm.textContent = 0;
           cartCount.classList.remove("active");
+          totalBox.classList.remove("active");
         }
         break;
     }
