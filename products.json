@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Americano Pure",
+    "price": 20,
+    "image": "./images/p1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Latte",
+    "price": 21,
+    "image": "./images/p2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Cappuccino Pure",
+    "price": 22,
+    "image": "./images/p3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Cold brew",
+    "price": 23,
+    "image": "./images/p4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Espresso Pure",
+    "price": 24,
+    "image": "./images/p5.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Decaffeinated coffee",
+    "price": 25,
+    "image": "./images/p6.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Instant coffee",
+    "price": 26,
+    "image": "./images/p7.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Aftertaste",
+    "price": 27,
+    "image": "./images/p8.jpg"
+  }
+]

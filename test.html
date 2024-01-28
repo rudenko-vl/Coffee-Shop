@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .cart-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .cart {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="content">
+  <h1>Your Website Content</h1>
+  <p>Some content goes here...</p>
+</div>
+
+<button class="cart-button" onclick="toggleCart()">Open Cart</button>
+
+<div class="cart-overlay" id="cartOverlay" onclick="hideCart()">
+  <div class="cart" onclick="event.stopPropagation()">
+    <button class="close-button" onclick="toggleCart()">×</button>
+    <h2>Shopping Cart</h2>
+    <!-- Здесь может быть содержимое корзины товаров -->
+    <p>Your cart is currently empty.</p>
+  </div>
+</div>
+
+<script>
+  function toggleCart() {
+    var cartOverlay = document.getElementById('cartOverlay');
+    cartOverlay.style.display = (cartOverlay.style.display === 'flex') ? 'none' : 'flex';
+  }
+
+  function hideCart() {
+    var cartOverlay = document.getElementById('cartOverlay');
+    cartOverlay.style.display = 'none';
+  }
+
+  // Добавляем обработчик событий для клика по всему документу
+  document.addEventListener('click', function (event) {
+    var cartOverlay = document.getElementById('cartOverlay');
+    var cartButton = document.querySelector('.cart-button');
+
+    // Если клик был вне карточки и кнопки открытия корзины, скрываем карточку
+    if (!cartOverlay.contains(event.target) && event.target !== cartButton) {
+      hideCart();
+    }
+  });
+</script>
+
+</body>
+</html>
