@@ -19,7 +19,7 @@ window.addEventListener("click", closeModal);
 window.addEventListener("keydown", closeModal);
 
 function closeModal(ev) {
-  if (ev.target === cartOverlay || ev.keyCode === 27) {
+  if (!cartOverlay.contains(ev.target) && ev.target !== openCartBtn || ev.keyCode === 27) {
     cartOverlay.classList.remove("active");
   }
 }
@@ -35,7 +35,7 @@ const iconCart = document.getElementById("open-cart");
 let carts = [];
 const listProductsHTML = document.querySelector(".products-container");
 let listProducts = [];
-const addDataToHTML = () => {
+const addDataToHTML = (listProducts) => {
   listProductsHTML.innerHTML = "";
   if (listProducts.length > 0) {
     listProducts.forEach((product) => {
@@ -191,12 +191,27 @@ removeAllButton.addEventListener('click', () => {
   }, 700)
 })
 
+// ==========================
+// SEARCH
+function filterData(query) {
+  return listProducts.filter(function (item) {
+    return item.name.toLowerCase().includes(query.toLowerCase());
+  });
+}
+
+document.getElementById('search-input').addEventListener('input', function () {
+  const searchQuery = this.value;
+  const listProducts = filterData(searchQuery);
+  addDataToHTML(listProducts);
+});
+// =========================
+
 const initApp = () => {
   fetch("products.json")
     .then((response) => response.json())
     .then((data) => {
       listProducts = data;
-      addDataToHTML();
+      addDataToHTML(listProducts);
       if (localStorage.getItem("cart")) {
         carts = JSON.parse(localStorage.getItem("cart"));
         addCartToHTML();
