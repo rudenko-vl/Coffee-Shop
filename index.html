@@ -1,261 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coffee Shop</title>
-    <link rel="stylesheet" href="./style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-  </head>
 
-  <body>
-    <header>
-      <a href="#" class="logo">
-        <img src="./images/logo.png" alt="logo" />
-      </a>
-      <i class="fa-solid fa-bars" id="menu-icon"></i>
-      <ul class="navbar">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#customers">Customers</a></li>
-      </ul>
-      <div class="header-icons">
-        <span class="cart-count"></span>
-        <i class="header-icon fa-solid fa-cart-shopping" id="open-cart"></i>
-        <i
-          class="header-icon fa-solid fa-magnifying-glass"
-          id="search-icon"
-        ></i>
-      </div>
-      <div class="search-box">
-        <input
-          type="search"
-          name=""
-          id="search-input"
-          placeholder="Search here..."
-        />
-      </div>
-    </header>
-    <!-- Home -->
-    <section class="home" id="home">
-      <!--  -->
-      <div class="cart-overlay" id="cartOverlay">
-        <div>
-          <button class="close-button" id="close-cart">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-          <h2 class="cart-title">Shopping Cart</h2>
-        </div>
-        <div class="cart">
-          <!-- <button class="close-button" id="close-cart">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-          <h2>Shopping Cart</h2>
-          <div class="products_box"></div>
-          <div class="total-box">
-            <h3>Total</h3>
-            <p class="total"></p>
-          </div>
-          <button class="btn" id="pay-btn">Buy</button> -->
-        </div>
-        <div class="total-box">
-          <h3>Total</h3>
-          <h4 class="total-summ"></h4>
-          <button class="btn" id="cart_btn">Buy</button>
-        </div>
-      </div>
-      <!--  -->
-      <div class="home-text">
-        <h1>
-          Start your day <br />
-          with coffee
-        </h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi iusto,
-          placeat itaque fuga dicta voluptas quasi, animi accusantium iste
-          sapiente fugiat enim adipisci minus natus! Minima ullam exercitationem
-          sed nisi.
-        </p>
-        <a href="#products" class="btn">Shop now</a>
-      </div>
-      <div class="home-img">
-        <img class="img-cup" src="./images/01.png" alt="coffee" />
-      </div>
-    </section>
-    <section class="about" id="about">
-      <div class="about-img">
-        <img src="./images/about.jpg" alt="coffee" />
-      </div>
-      <div class="about-text">
-        <h2>Our History</h2>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel porro
-          fugit autem dolorem nihil! Nam iusto, illum aspernatur sed placeat
-          laboriosam provident natus, facilis autem commodi rem unde, quisquam
-          ratione!
-        </p>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel porro
-          fugit autem dolorem nihil! Nam iusto, illum aspernatur sed placeat
-          laboriosam provident natus, facilis autem commodi rem unde, quisquam
-          ratione!
-        </p>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel porro
-          fugit autem dolorem nihil! Nam iusto, illum aspernatur sed placeat
-          laboriosam provident natus, facilis autem commodi rem unde, quisquam
-          ratione!
-        </p>
-        <a href="#" class="btn">Learn more</a>
-      </div>
-    </section>
-    <section class="products" id="products">
-      <div class="heading">
-        <h2>Our popular products</h2>
-      </div>
-      <div class="products-container"></div>
-    </section>
-    <section class="customers" id="customers">
-      <div class="heading">
-        <h2>Our customer's</h2>
-      </div>
-      <div class="customer-container">
-        <div class="box">
-          <div class="stars">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star-half-stroke"></i>
-          </div>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
-            adipisci perferendis dolore dignissimos assumenda mollitia suscipit,
-            voluptas praesentium quos expedita soluta culpa aliquid ratione, quo
-            eius, ex quisquam temporibus laboriosam.
-          </p>
-          <h2>Cristiano Ronaldo</h2>
-          <img src="./images/Cristiano.jpg" alt="Cristiano" />
-        </div>
-        <div class="box">
-          <div class="stars">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
-            adipisci perferendis dolore dignissimos assumenda mollitia suscipit,
-            voluptas praesentium quos expedita soluta culpa aliquid ratione, quo
-            eius, ex quisquam temporibus laboriosam.
-          </p>
-          <h2>Lionel Messi</h2>
-          <img src="./images/Messi.jpg" alt="Messi" />
-        </div>
-        <div class="box">
-          <div class="stars">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star-half-stroke"></i>
-          </div>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
-            adipisci perferendis dolore dignissimos assumenda mollitia suscipit,
-            voluptas praesentium quos expedita soluta culpa aliquid ratione, quo
-            eius, ex quisquam temporibus laboriosam.
-          </p>
-          <h2>Neimar</h2>
-          <img src="./images/neimar.jpg" alt="Neimar" />
-        </div>
-        <div class="box">
-          <div class="stars">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
-            adipisci perferendis dolore dignissimos assumenda mollitia suscipit,
-            voluptas praesentium quos expedita soluta culpa aliquid ratione, quo
-            eius, ex quisquam temporibus laboriosam.
-          </p>
-          <h2>Kylian Mbappé</h2>
-          <img src="./images/mbappe.jpg" alt="Mbappe" />
-        </div>
-      </div>
-    </section>
-    <section class="footer">
-      <div class="footer-box">
-        <h2>Coffee Shop</h2>
-        <p>Follow us on social media</p>
-        <div class="social">
-          <a href="#"><i class="fa-brands fa-facebook"></i></a>
-          <a href="#"><i class="fa-brands fa-twitter"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-        </div>
-      </div>
-      <div class="footer-box">
-        <h2>Support</h2>
-        <ul class="footer-list">
-          <li><a href="#"></a>Product</li>
-          <li><a href="#"></a>Help & Support</li>
-          <li><a href="#"></a>Return Policy</li>
-          <li><a href="#"></a>Terms Of Use</li>
-        </ul>
-      </div>
-      <div class="footer-box">
-        <h2>View Guides</h2>
-        <ul class="footer-list">
-          <li><a href="#"></a>Features</li>
-          <li><a href="#"></a>Careers</li>
-          <li><a href="#"></a>Blog Posts</li>
-          <li><a href="#"></a>Our Branches</li>
-        </ul>
-      </div>
-      <div class="footer-box">
-        <h2>Contact</h2>
-        <div class="contact">
-          <ul>
-            <li class="contact-link">
-              <a
-                href="https://maps.app.goo.gl/PzYxqfEJZce9GSh89"
-                target="_blank"
-                rel="noopener noreferrer"
-                ><i class="fa-solid fa-location-dot"></i>250 New Yourk City, USA
-                10001</a
-              >
-            </li>
-            <li class="contact-link">
-              <a href="mailto:coffeeshop@gmail.com"
-                ><i class="fa-regular fa-envelope"></i>coffeeshop@gmail.com</a
-              >
-            </li>
-            <li class="contact-link">
-              <a href="tel:+380501234567"
-                ><i class="fa-solid fa-phone"></i>+38 050 123 45 67</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    <div class="copyright">
-      <p>&#169; 2024 | All Right Reserved</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffee Shop</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
+  <header>
+    <a href="#" class="logo">
+      <img src="./images/logo.png" alt="logo" />
+    </a>
+    <i class="fa-solid fa-bars" id="menu-icon"></i>
+    <ul class="navbar">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#customers">Customers</a></li>
+    </ul>
+    <div class="header-icons">
+      <span class="cart-count"></span>
+      <i class="header-icon fa-solid fa-cart-shopping" id="open-cart"></i>
+      <i class="header-icon fa-solid fa-magnifying-glass" id="search-icon"></i>
     </div>
+    <div class="search-box">
+      <input type="search" name="" id="search-input" placeholder="Search here..." />
+    </div>
+  </header>
+  <!-- Home -->
+  <section class="home" id="home">
+    <!--  -->
+    <div class="cart-overlay" id="cartOverlay">
+      <div>
+        <button class="close-button" id="close-cart">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <h2 class="cart-title">Shopping Cart</h2>
+      </div>
+      <div class="cart">
+      </div>
+      <div class="total-box">
+        <h3>Total</h3>
+        <h4 class="total-summ"></h4>
+        <div class="total_btns">
+          <button class="btn" id="cart_btn">Buy</button>
+          <button class="btn remove-all_btn" id="cart_btn">Remove All</button>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="home-text">
+      <h1>
+        Start your day <br />
+        with coffee
+      </h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi iusto,
+        placeat itaque fuga dicta voluptas quasi, animi accusantium iste
+        sapiente fugiat enim adipisci minus natus! Minima ullam exercitationem
+        sed nisi.
+      </p>
+      <a href="#products" class="btn">Shop now</a>
+    </div>
+    <div class="home-img">
+      <img class="img-cup" src="./images/01.png" alt="coffee" />
+    </div>
+  </section>
+  <section class="about" id="about">
+    <div class="about-img">
+      <img src="./images/about_us.jpg" alt="coffee" />
+    </div>
+    <div class="about-text">
+      <h2>Our History</h2>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel porro
+        fugit autem dolorem nihil! Nam iusto, illum aspernatur sed placeat
+        laboriosam provident natus, facilis autem commodi rem unde, quisquam
+        ratione!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel porro
+        fugit autem dolorem nihil! Nam iusto, illum aspernatur sed placeat
+        laboriosam provident natus, facilis autem commodi rem unde, quisquam
+        ratione!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel porro
+        fugit autem dolorem nihil! Nam iusto, illum aspernatur sed placeat
+        laboriosam provident natus, facilis autem commodi rem unde, quisquam
+        ratione!
+      </p>
+      <a href="#" class="btn">Learn more</a>
+    </div>
+  </section>
+  <section class="products" id="products">
+    <div class="heading">
+      <h2>Our popular products</h2>
+    </div>
+    <div class="products-container"></div>
+  </section>
+  <section class="customers" id="customers">
+    <div class="heading">
+      <h2>Our customer's</h2>
+    </div>
+    <div class="customer-container">
+      <div class="box">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
+          adipisci perferendis dolore dignissimos assumenda mollitia suscipit,
+          voluptas praesentium quos expedita soluta culpa aliquid ratione, quo
+          eius, ex quisquam temporibus laboriosam.
+        </p>
+        <h2>Cristiano Ronaldo</h2>
+        <img src="./images/Cristiano.jpg" alt="Cristiano" />
+      </div>
+      <div class="box">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
+          adipisci perferendis dolore dignissimos assumenda mollitia suscipit,
+          voluptas praesentium quos expedita soluta culpa aliquid ratione, quo
+          eius, ex quisquam temporibus laboriosam.
+        </p>
+        <h2>Lionel Messi</h2>
+        <img src="./images/Messi.jpg" alt="Messi" />
+      </div>
+      <div class="box">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
+          adipisci perferendis dolore dignissimos assumenda mollitia suscipit,
+          voluptas praesentium quos expedita soluta culpa aliquid ratione, quo
+          eius, ex quisquam temporibus laboriosam.
+        </p>
+        <h2>Neimar</h2>
+        <img src="./images/neimar.jpg" alt="Neimar" />
+      </div>
+      <div class="box">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
+          adipisci perferendis dolore dignissimos assumenda mollitia suscipit,
+          voluptas praesentium quos expedita soluta culpa aliquid ratione, quo
+          eius, ex quisquam temporibus laboriosam.
+        </p>
+        <h2>Kylian Mbappé</h2>
+        <img src="./images/mbappe.jpg" alt="Mbappe" />
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer-box">
+      <h2>Coffee Shop</h2>
+      <p>Follow us on social media</p>
+      <div class="social">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div class="footer-box">
+      <h2>Support</h2>
+      <ul class="footer-list">
+        <li><a href="#"></a>Product</li>
+        <li><a href="#"></a>Help & Support</li>
+        <li><a href="#"></a>Return Policy</li>
+        <li><a href="#"></a>Terms Of Use</li>
+      </ul>
+    </div>
+    <div class="footer-box">
+      <h2>View Guides</h2>
+      <ul class="footer-list">
+        <li><a href="#"></a>Features</li>
+        <li><a href="#"></a>Careers</li>
+        <li><a href="#"></a>Blog Posts</li>
+        <li><a href="#"></a>Our Branches</li>
+      </ul>
+    </div>
+    <div class="footer-box">
+      <h2>Contact</h2>
+      <div class="contact">
+        <ul>
+          <li class="contact-link">
+            <a href="https://maps.app.goo.gl/PzYxqfEJZce9GSh89" target="_blank" rel="noopener noreferrer"><i
+                class="fa-solid fa-location-dot"></i>250 New Yourk City, USA
+              10001</a>
+          </li>
+          <li class="contact-link">
+            <a href="mailto:coffeeshop@gmail.com"><i class="fa-regular fa-envelope"></i>coffeeshop@gmail.com</a>
+          </li>
+          <li class="contact-link">
+            <a href="tel:+380501234567"><i class="fa-solid fa-phone"></i>+38 050 123 45 67</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <div class="copyright">
+    <p>&#169; 2024 | All Right Reserved</p>
+  </div>
 
-    <script src="./js/main.js"></script>
-    <script src="./js/openCart.js"></script>
-    <script src="./js/shoping.js"></script>
-  </body>
+  <script src="./js/main.js"></script>
+  <script src="./js/openCart.js"></script>
+</body>
+
 </html>

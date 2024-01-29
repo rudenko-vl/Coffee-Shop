@@ -26,7 +26,8 @@ function closeModal(ev) {
 
 // =======================
 const cartCount = document.querySelector(".cart-count");
-// const buyButton = document.getElementById('cart_btn');
+const buyButton = document.getElementById('cart_btn');
+const removeAllButton = document.querySelector('.remove-all_btn');
 const totalSumm = document.querySelector(".total-summ");
 const totalBox = document.querySelector(".total-box");
 const listCartHTML = document.querySelector(".cart");
@@ -55,7 +56,6 @@ listProductsHTML.addEventListener("click", (e) => {
   if (positionClick.classList.contains("buy_btn")) {
     let product_id = positionClick.parentElement.dataset.id;
     addToCart(product_id);
-    cartOverlay.classList.add("active");
   }
 });
 const addToCart = (product_id) => {
@@ -107,14 +107,14 @@ const addCartToHTML = () => {
       newCart.innerHTML = `
       <div class="cart-image">
   <img src="${info.image}" alt="img">
+  <h4>${info.name}</h4>
+<p class="item-price">${info.price * cart.quantity}$</p>
 </div>
-<h3>${info.name}</h3>
-<p>Price</p>
-<p class="item-price">${info.price * cart.quantity}</p>
+
   <span class="minus">-</span>
   <span class="cart-quantity">${cart.quantity}</span>
   <span class="plus">+</span>
-`;
+  `;
       listCartHTML.appendChild(newCart);
       totalBox.classList.add("active");
     });
@@ -164,6 +164,32 @@ const changeQuantity = (product_id, type) => {
   addCartToMemory();
   addCartToHTML();
 };
+
+buyButton.addEventListener('click', () => {
+  alert('Your order has been processed')
+  listCartHTML.innerHTML = "";
+  carts = [];
+  localStorage.setItem("cart", []);
+  totalSumm.textContent = 0;
+  cartCount.classList.remove("active");
+  totalBox.classList.remove("active");
+  setTimeout(() => {
+    cartOverlay.classList.remove("active");
+  }, 700)
+})
+
+removeAllButton.addEventListener('click', () => {
+  alert('Your products will be deleted')
+  listCartHTML.innerHTML = "";
+  carts = [];
+  localStorage.setItem("cart", []);
+  totalSumm.textContent = 0;
+  cartCount.classList.remove("active");
+  totalBox.classList.remove("active");
+  setTimeout(() => {
+    cartOverlay.classList.remove("active");
+  }, 700)
+})
 
 const initApp = () => {
   fetch("products.json")
