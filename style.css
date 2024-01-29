@@ -182,7 +182,7 @@ header.shadow {
 }
 
 .home-text p {
-  font-size: 0.938rem;
+  font-size: 1.2rem;
   color: var(--bg-color);
   margin: 0.5rem 0 1.4rem;
 }
@@ -193,6 +193,9 @@ header.shadow {
   background: var(--main-color);
   color: var(--bg-color);
   font-weight: 500;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .btn:hover {
@@ -380,15 +383,21 @@ header.shadow {
   column-gap: 0.5rem;
 }
 
-.social a i {
+.social button {
+  border: none;
+  cursor: pointer;
+}
+
+.social button i {
   font-size: 24px;
   color: var(--text-color);
   padding: 10px;
   background: var(--second-color);
   border-radius: 0.2rem;
+  transition: 0.5s;
 }
 
-.social a i:hover {
+.social button i:hover {
   background: var(--main-color);
   color: var(--bg-color);
 }
