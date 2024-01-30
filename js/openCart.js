@@ -175,6 +175,8 @@ const changeQuantity = (product_id, type) => {
 const buyButton = document.getElementById('cart_btn');
 const modalBtn1 = document.getElementById('modal-btn1');
 const modalBtn2 = document.getElementById('modal-btn2');
+const lastBtn = document.getElementById('finall-btn');
+const lastWindow = document.querySelector('.last-window');
 const modalOverlay = document.getElementById('modalOverlay');
 const closeModalIcon = document.querySelector('.close-modal');
 const spinner = document.querySelector(".spinner");
@@ -188,7 +190,9 @@ buyButton.addEventListener('click', () => {
 })
 
 function hideModal() {
-  modalOverlay.classList.remove('active')
+  modalOverlay.classList.remove('active');
+  lastWindow.classList.add("visually-hidden");
+  modalDiv.classList.remove("visually-hidden");
 }
 modalBtn2.addEventListener('click', () => {
   hideModal();
@@ -217,10 +221,17 @@ modalBtn1.addEventListener('click', () => {
   totalBox.classList.remove("active");
   setTimeout(() => {
     spinner.classList.add("visually-hidden");
-    cartOverlay.classList.remove("active");
-    hideModal()
-    modalDiv.classList.remove("visually-hidden");
+    lastWindow.classList.remove("visually-hidden");
   }, 1000)
+})
+
+lastBtn.addEventListener('click', () => {
+  cartOverlay.classList.remove("active");
+  hideModal()
+  modalDiv.classList.remove("visually-hidden");
+  setTimeout(() => {
+    lastWindow.classList.add("visually-hidden");
+  }, 500)
 })
 
 removeAllButton.addEventListener('click', () => {
