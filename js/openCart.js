@@ -26,7 +26,6 @@ function closeModal(ev) {
 
 // =======================
 const cartCount = document.querySelector(".cart-count");
-const buyButton = document.getElementById('cart_btn');
 const removeAllButton = document.querySelector('.remove-all_btn');
 const totalSumm = document.querySelector(".total-summ");
 const totalBox = document.querySelector(".total-box");
@@ -49,6 +48,15 @@ const addDataToHTML = (listProducts) => {
           <button class="buy_btn">Add to cart</button>`;
       listProductsHTML.appendChild(newProduct);
     });
+  } else {
+    let newProduct = document.createElement("div");
+    newProduct.classList.add("box");
+    newProduct.innerHTML = `
+      <img src="./images/nothing_found.png" alt="product" />
+          <h3 class="product-title">Nothing found!</h3>
+            <span class="product-price">$0</span>
+          `;
+    listProductsHTML.appendChild(newProduct);
   }
 };
 listProductsHTML.addEventListener("click", (e) => {
@@ -164,9 +172,43 @@ const changeQuantity = (product_id, type) => {
   addCartToMemory();
   addCartToHTML();
 };
+const buyButton = document.getElementById('cart_btn');
+const modalBtn1 = document.getElementById('modal-btn1');
+const modalBtn2 = document.getElementById('modal-btn2');
+const modalOverlay = document.getElementById('modalOverlay');
+const closeModalIcon = document.querySelector('.close-modal');
+const spinner = document.querySelector(".spinner");
+const modalDiv = document.querySelector(".modal");
+const modalTitle = document.querySelector(".modal-title");
+
 
 buyButton.addEventListener('click', () => {
-  alert('Your order has been processed')
+  modalOverlay.classList.add('active')
+  modalTitle.textContent = 'Your order will be processed!'
+})
+
+function hideModal() {
+  modalOverlay.classList.remove('active')
+}
+modalBtn2.addEventListener('click', () => {
+  hideModal();
+  setTimeout(() => {
+    cartOverlay.classList.toggle("active");
+  }, 300)
+});
+
+closeModalIcon.addEventListener('click', hideModal);
+
+document.addEventListener('click', (ev) => {
+  if (ev.target === modalOverlay || ev.keyCode === 27) {
+    hideModal();
+  }
+});
+
+
+modalBtn1.addEventListener('click', () => {
+  modalDiv.classList.add("visually-hidden");
+  spinner.classList.remove("visually-hidden");
   listCartHTML.innerHTML = "";
   carts = [];
   localStorage.setItem("cart", []);
@@ -174,36 +216,41 @@ buyButton.addEventListener('click', () => {
   cartCount.classList.remove("active");
   totalBox.classList.remove("active");
   setTimeout(() => {
+    spinner.classList.add("visually-hidden");
     cartOverlay.classList.remove("active");
-  }, 700)
+    hideModal()
+    modalDiv.classList.remove("visually-hidden");
+  }, 1000)
 })
 
 removeAllButton.addEventListener('click', () => {
-  alert('Your products will be deleted')
-  listCartHTML.innerHTML = "";
-  carts = [];
-  localStorage.setItem("cart", []);
-  totalSumm.textContent = 0;
-  cartCount.classList.remove("active");
-  totalBox.classList.remove("active");
-  setTimeout(() => {
-    cartOverlay.classList.remove("active");
-  }, 700)
+  modalOverlay.classList.add('active');
+  modalTitle.textContent = 'All products will be deleted!'
 })
 
 // ==========================
 // SEARCH
 function filterData(query) {
   return listProducts.filter(function (item) {
-    return item.name.toLowerCase().includes(query.toLowerCase());
+    return item.name.toLowerCase().includes(query.toLowerCase()) || item.price == query;
   });
 }
+function scrollToSection(sectionId) {
+  const prodSection = document.getElementById(sectionId);
+  if (prodSection) {
+    prodSection.scrollIntoView({ behavior: 'smooth' });
+  }
+}
 
-document.getElementById('search-input').addEventListener('input', function () {
+const searchInput = document.getElementById('search-input');
+
+searchInput.addEventListener('input', function () {
   const searchQuery = this.value;
   const listProducts = filterData(searchQuery);
+  scrollToSection('products');
   addDataToHTML(listProducts);
 });
+
 // =========================
 
 const initApp = () => {

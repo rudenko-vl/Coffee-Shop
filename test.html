@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+
+    <button class="cart-button" onclick="toggleCart()">Open Cart</button>
+
+    <div class="modal-overlay" id="modalOverlay" onclick="hideCart()">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="close-button" onclick="toggleCart()">×</button>
+            <h2>Shopping Cart</h2>
+            <p>Your cart is currently empty.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleCart() {
+            var cartOverlay = document.getElementById('modalOverlay');
+            cartOverlay.style.display = (cartOverlay.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function hideCart() {
+            var cartOverlay = document.getElementById('cartOverlay');
+            cartOverlay.style.display = 'none';
+        }
+
+        // Добавляем обработчик событий для клика по всему документу
+        document.addEventListener('click', function (event) {
+            var cartOverlay = document.getElementById('cartOverlay');
+            var cartButton = document.querySelector('.cart-button');
+
+            // Если клик был вне карточки и кнопки открытия корзины, скрываем карточку
+            if (!cartOverlay.contains(event.target) && event.target !== cartButton) {
+                hideCart();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
