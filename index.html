@@ -47,7 +47,7 @@
         <h4 class="total-summ"></h4>
         <div class="total_btns">
           <button class="btn total-btn" id="cart_btn">Buy</button>
-          <button class="btn remove-all_btn" id="cart_btn">Clean All</button>
+          <button class="btn remove-all_btn">Clean All</button>
         </div>
       </div>
     </div>
@@ -90,11 +90,35 @@
         <button class="close-modal">
           <i class="fa-solid fa-xmark"></i>
         </button>
-        <h2 class="modal-title"></h2>
-        <div class="total_btns">
-          <button class="btn total-btn" id="modal-btn1">Ok</button>
-          <button class="btn remove-all_btn" id="modal-btn2">Back</button>
+        <div class="payment visually-hidden">
+          <h1 class="payTitle">Personal Information</h1>
+          <label>Name and Surname</label>
+          <input type="text" placeholder="Elon Musk" class="payInput" id="nameInput">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+38 099 123 45 67" class="payInput" id="phoneImput">
+          <label>Address</label>
+          <input type="text" placeholder="Elton St 21 22-145" class="payInput" id="addressInput">
+          <h1 class="payTitle">Card Information</h1>
+          <div class="cardIcons">
+            <img src="./images/visa.png" width="40" alt="" class="cardIcon">
+            <img src="./images/master.png" alt="" width="40" class="cardIcon">
+          </div>
+          <input type="password" class="payInput" placeholder="Card Number" id="cardNumber">
+          <div class="cardInfo">
+            <input type="text" placeholder="mm" class="payInput sm" id="cardMounth">
+            <input type="text" placeholder="yyyy" class="payInput sm" id="cardYear">
+            <input type="text" placeholder="cvv" class="payInput sm" id="cardCvv">
+          </div>
+          <button class="payButton" type="submit">Checkout!</button>
         </div>
+        <div class="clean-products visually-hidden">
+          <h2 class="modal-title">All products will be deleted!</h2>
+          <div class="total_btns">
+            <button class="btn total-btn" id="modal-btn1">Ok</button>
+            <button class="btn remove-all_btn" id="modal-btn2">Back</button>
+          </div>
+        </div>
+
       </div>
     </div>
     <!-- Modal -->
@@ -261,6 +285,7 @@
 
   <script src="./js/main.js"></script>
   <script src="./js/openCart.js"></script>
+  <!-- <script src="./js/payment.js"></script> -->
 </body>
 
 </html>

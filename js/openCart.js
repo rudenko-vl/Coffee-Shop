@@ -26,7 +26,6 @@ function closeModal(ev) {
 
 // =======================
 const cartCount = document.querySelector(".cart-count");
-const removeAllButton = document.querySelector('.remove-all_btn');
 const totalSumm = document.querySelector(".total-summ");
 const totalBox = document.querySelector(".total-box");
 const listCartHTML = document.querySelector(".cart");
@@ -162,7 +161,7 @@ const changeQuantity = (product_id, type) => {
           carts[positionItemtInCart].quantity = valueChange;
         } else {
           carts.splice(positionItemtInCart, 1);
-          totalSumm.textContent = 0;
+          totalSumm.textCoalBtn1ntent = 0;
           cartCount.classList.remove("active");
           totalBox.classList.remove("active");
         }
@@ -181,23 +180,31 @@ const modalOverlay = document.getElementById('modalOverlay');
 const closeModalIcon = document.querySelector('.close-modal');
 const spinner = document.querySelector(".spinner");
 const modalDiv = document.querySelector(".modal");
-const modalTitle = document.querySelector(".modal-title");
+const payment = document.querySelector(".payment");
+const payButton = document.querySelector(".payButton");
+const removeModal = document.querySelector('.clean-products');
+const removeAllButton = document.querySelector('.remove-all_btn');
 
 
 buyButton.addEventListener('click', () => {
+  payButton.disabled = true;
+  payButton.classList.add("disabled")
   modalOverlay.classList.add('active')
-  modalTitle.textContent = 'Your order will be processed!'
+  payment.classList.remove('visually-hidden')
 })
 
 function hideModal() {
   modalOverlay.classList.remove('active');
   lastWindow.classList.add("visually-hidden");
   modalDiv.classList.remove("visually-hidden");
+  payment.classList.add('visually-hidden')
+  removeModal.classList.add('visually-hidden')
 }
 modalBtn2.addEventListener('click', () => {
   hideModal();
   setTimeout(() => {
     cartOverlay.classList.toggle("active");
+    removeModal.classList.add("visually-hidden");
   }, 300)
 });
 
@@ -209,6 +216,22 @@ document.addEventListener('click', (ev) => {
   }
 });
 
+
+payButton.addEventListener('click', () => {
+  modalDiv.classList.add("visually-hidden");
+  spinner.classList.remove("visually-hidden");
+  listCartHTML.innerHTML = "";
+  carts = [];
+  localStorage.setItem("cart", []);
+  totalSumm.textContent = 0;
+  cartCount.classList.remove("active");
+  totalBox.classList.remove("active");
+  setTimeout(() => {
+    spinner.classList.add("visually-hidden");
+    lastWindow.classList.remove("visually-hidden");
+    payment.classList.add('visually-hidden')
+  }, 1000)
+})
 
 modalBtn1.addEventListener('click', () => {
   modalDiv.classList.add("visually-hidden");
@@ -222,6 +245,8 @@ modalBtn1.addEventListener('click', () => {
   setTimeout(() => {
     spinner.classList.add("visually-hidden");
     lastWindow.classList.remove("visually-hidden");
+    payment.classList.add('visually-hidden')
+    removeModal.classList.add('visually-hidden')
   }, 1000)
 })
 
@@ -234,9 +259,11 @@ lastBtn.addEventListener('click', () => {
   }, 500)
 })
 
+
 removeAllButton.addEventListener('click', () => {
   modalOverlay.classList.add('active');
-  modalTitle.textContent = 'All products will be deleted!'
+  removeModal.classList.remove('visually-hidden');
+
 })
 
 // ==========================
@@ -254,9 +281,13 @@ function scrollToSection(sectionId) {
 }
 
 const searchInput = document.getElementById('search-input');
-
 searchInput.addEventListener('input', function () {
+  const curentScrollPosition = document.body.scrollTop;
+  console.log(curentScrollPosition);
   const searchQuery = this.value;
+  // if (curentScrollPosition !== 0) {
+  //   console.log('hui')
+  // }
   const listProducts = filterData(searchQuery);
   scrollToSection('products');
   addDataToHTML(listProducts);
