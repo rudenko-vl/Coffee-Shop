@@ -127,6 +127,18 @@ header.shadow {
   color: var(--main-color);
 }
 
+/* @media (hover:hover) {
+  .header-icon:hover {
+    color: var(--main-color);
+  }
+}
+
+@media (hover:none) {
+  .header-icon:active {
+    color: var(--main-color);
+  }
+} */
+
 #menu-icon {
   color: var(--bg-color);
   font-size: 24px;
@@ -250,6 +262,7 @@ header.shadow {
   border: none;
   cursor: pointer;
   font-size: 16px;
+  transition: 0.5s;
 }
 
 .btn:hover {
@@ -789,12 +802,16 @@ header.shadow {
   width: 70%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .cart-image h4 {
   margin-left: 10px;
   font-size: 13px;
+}
+
+.product-descr {
+  display: flex;
+  flex-direction: column;
 }
 
 .item-price {
@@ -866,8 +883,6 @@ header.shadow {
 }
 
 .last-window {
-  width: 200px;
-  height: 200px;
   padding: 30px;
   display: flex;
   justify-content: center;
@@ -877,7 +892,31 @@ header.shadow {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.last-window h3 {
+.my_order {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
+}
+
+.my_order li {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #292859;
+}
+
+.my_order li span {
+  color: #cc230d;
+}
+
+@media screen and (min-width: 480px) {
+  .my_order li {
+    font-size: 20px;
+  }
+}
+
+.last-window h2 {
   margin: 20px 0px;
   text-align: center;
 }
@@ -955,6 +994,12 @@ label {
   border-bottom: 1px solid gray;
 }
 
+.payInput:focus,
+.payInput:hover {
+  outline: none;
+  border-bottom: 2px solid rgb(14, 148, 59);
+}
+
 .payInput::placeholder {
   color: rgb(163, 163, 163);
 }
@@ -987,6 +1032,11 @@ label {
   border: none;
   cursor: pointer;
   margin-top: 20px;
+  transition: 0.5s;
+}
+
+.payButton:hover {
+  background-color: #08662f;
 }
 
 .disabled {

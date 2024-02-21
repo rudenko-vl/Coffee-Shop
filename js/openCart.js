@@ -114,8 +114,10 @@ const addCartToHTML = () => {
       newCart.innerHTML = `
       <div class="cart-image">
   <img src="${info.image}" alt="img">
-  <h4>${info.name}</h4>
-<p class="item-price">${info.price * cart.quantity}$</p>
+    <div class="product-descr">
+    <h4>${info.name}</h4>
+    <p class="item-price">${info.price * cart.quantity}$</p>
+    </div>
 </div>
 
   <span class="minus">-</span>
@@ -180,25 +182,104 @@ const modalOverlay = document.getElementById('modalOverlay');
 const closeModalIcon = document.querySelector('.close-modal');
 const spinner = document.querySelector(".spinner");
 const modalDiv = document.querySelector(".modal");
-const payment = document.querySelector(".payment");
+const paymentForm = document.querySelector(".payment");
 const payButton = document.querySelector(".payButton");
 const removeModal = document.querySelector('.clean-products');
 const removeAllButton = document.querySelector('.remove-all_btn');
+const nameInput = document.getElementById('nameInput');
+const addressInput = document.getElementById('addressInput');
+const phoneImput = document.getElementById('phoneImput');
+const cardNumber = document.getElementById('cardNumber');
+const cardMounth = document.getElementById('cardMounth');
+const cardYear = document.getElementById('cardYear');
+const cardCvv = document.getElementById('cardCvv');
 
+const my_order = document.querySelector('.my_order');
+
+let nameInputValue
+let addressInputValue
+let phoneImputValue
+let cardNumberValue
+let cardMounthValue
+let cardYearValue
+let cardCvvValue
+
+const usersInfo = [];
+payButton.disabled = true;
+payButton.classList.add("disabled");
+
+paymentForm.addEventListener('input', function () {
+  nameInputValue = nameInput.value;
+  addressInputValue = addressInput.value;
+  phoneImputValue = phoneImput.value;
+  cardNumberValue = cardNumber.value;
+  cardMounthValue = cardMounth.value;
+  cardYearValue = cardYear.value;
+  cardCvvValue = cardCvv.value;
+
+  let allFieldsFilled = nameInputValue.trim() !== '' && addressInputValue.trim() !== '' && phoneImputValue.trim() !== '' && cardNumberValue.trim() !== '' && cardMounthValue.trim() !== '' && cardYearValue.trim() !== '' && cardCvvValue.trim() !== '';
+  payButton.disabled = !allFieldsFilled;
+  if (payButton.disabled) {
+    payButton.classList.add("disabled");
+  } else {
+    payButton.classList.remove("disabled");
+  }
+
+});
+
+payButton.addEventListener('click', () => {
+  const payInfo = {
+    "name": nameInputValue,
+    "address": addressInputValue,
+    "phone": phoneImputValue,
+    "card": cardNumberValue,
+    "mounth": cardMounthValue,
+    "year": cardYearValue,
+    "cvv": cardCvvValue,
+  }
+  usersInfo.push(payInfo)
+  console.log(usersInfo);
+  carts.map((item, index) => {
+    my_order.insertAdjacentHTML("beforeend", `<li>☕ ${listProducts[item.product_id - 1].name} - <span>${carts[index].quantity} pc.</span></li>`);
+  })
+
+
+  modalDiv.classList.add("visually-hidden");
+  spinner.classList.remove("visually-hidden");
+  listCartHTML.innerHTML = "";
+  carts = [];
+  localStorage.setItem("cart", []);
+  totalSumm.textContent = 0;
+  cartCount.classList.remove("active");
+  totalBox.classList.remove("active");
+  setTimeout(() => {
+    spinner.classList.add("visually-hidden");
+    lastWindow.classList.remove("visually-hidden");
+    paymentForm.classList.add('visually-hidden');
+    payButton.classList.add("disabled");
+    payButton.disabled = true;
+    nameInput.value = ''
+    addressInput.value = ''
+    phoneImput.value = ''
+    cardNumber.value = ''
+    cardMounth.value = ''
+    cardYear.value = ''
+    cardCvv.value = ''
+  }, 1000)
+})
 
 buyButton.addEventListener('click', () => {
-  payButton.disabled = true;
-  payButton.classList.add("disabled")
-  modalOverlay.classList.add('active')
-  payment.classList.remove('visually-hidden')
+  modalOverlay.classList.add('active');
+  paymentForm.classList.remove('visually-hidden');
 })
 
 function hideModal() {
   modalOverlay.classList.remove('active');
   lastWindow.classList.add("visually-hidden");
   modalDiv.classList.remove("visually-hidden");
-  payment.classList.add('visually-hidden')
-  removeModal.classList.add('visually-hidden')
+  paymentForm.classList.add('visually-hidden');
+  removeModal.classList.add('visually-hidden');
+  my_order.innerHTML = "";
 }
 modalBtn2.addEventListener('click', () => {
   hideModal();
@@ -217,22 +298,6 @@ document.addEventListener('click', (ev) => {
 });
 
 
-payButton.addEventListener('click', () => {
-  modalDiv.classList.add("visually-hidden");
-  spinner.classList.remove("visually-hidden");
-  listCartHTML.innerHTML = "";
-  carts = [];
-  localStorage.setItem("cart", []);
-  totalSumm.textContent = 0;
-  cartCount.classList.remove("active");
-  totalBox.classList.remove("active");
-  setTimeout(() => {
-    spinner.classList.add("visually-hidden");
-    lastWindow.classList.remove("visually-hidden");
-    payment.classList.add('visually-hidden')
-  }, 1000)
-})
-
 modalBtn1.addEventListener('click', () => {
   modalDiv.classList.add("visually-hidden");
   spinner.classList.remove("visually-hidden");
@@ -245,7 +310,7 @@ modalBtn1.addEventListener('click', () => {
   setTimeout(() => {
     spinner.classList.add("visually-hidden");
     lastWindow.classList.remove("visually-hidden");
-    payment.classList.add('visually-hidden')
+    paymentForm.classList.add('visually-hidden')
     removeModal.classList.add('visually-hidden')
   }, 1000)
 })
@@ -256,6 +321,7 @@ lastBtn.addEventListener('click', () => {
   modalDiv.classList.remove("visually-hidden");
   setTimeout(() => {
     lastWindow.classList.add("visually-hidden");
+    my_order.innerHTML = "";
   }, 500)
 })
 
@@ -285,9 +351,6 @@ searchInput.addEventListener('input', function () {
   const curentScrollPosition = document.body.scrollTop;
   console.log(curentScrollPosition);
   const searchQuery = this.value;
-  // if (curentScrollPosition !== 0) {
-  //   console.log('hui')
-  // }
   const listProducts = filterData(searchQuery);
   scrollToSection('products');
   addDataToHTML(listProducts);

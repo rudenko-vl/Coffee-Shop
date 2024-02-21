@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Coffee Shop</title>
+  <link rel="icon" type="image/png" href="./images/icon.png">
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
@@ -83,14 +84,15 @@
       <div class="spinner visually-hidden">
       </div>
       <div class="last-window visually-hidden">
-        <h3>Done!</h3>
+        <h2>Done!</h2>
+        <ul class="my_order"></ul>
         <button class="btn" id="finall-btn">Ok</button>
       </div>
       <div class="modal">
         <button class="close-modal">
           <i class="fa-solid fa-xmark"></i>
         </button>
-        <div class="payment visually-hidden">
+        <form class="payment visually-hidden">
           <h1 class="payTitle">Personal Information</h1>
           <label>Name and Surname</label>
           <input type="text" placeholder="Elon Musk" class="payInput" id="nameInput">
@@ -110,7 +112,7 @@
             <input type="text" placeholder="cvv" class="payInput sm" id="cardCvv">
           </div>
           <button class="payButton" type="submit">Checkout!</button>
-        </div>
+        </form>
         <div class="clean-products visually-hidden">
           <h2 class="modal-title">All products will be deleted!</h2>
           <div class="total_btns">
@@ -285,7 +287,6 @@
 
   <script src="./js/main.js"></script>
   <script src="./js/openCart.js"></script>
-  <!-- <script src="./js/payment.js"></script> -->
 </body>
 
 </html>
