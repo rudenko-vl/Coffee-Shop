@@ -93,7 +93,6 @@ inputYear.addEventListener('input', () => {
         isValidYear = false;
         return false
     }
-    // else if (!year.match(/^202\d[4-9]$/))
     else if (!year.match(/^(202[4-9]|203[0-9])$/)) {
         yearError.innerHTML = 'From 2024 to...'
         isValidYear = false;

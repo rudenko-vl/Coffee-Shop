@@ -953,6 +953,19 @@ header.shadow {
   animation: spin 1s linear infinite;
 }
 
+.spinner-container {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.spinner-container i {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  color: white;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
