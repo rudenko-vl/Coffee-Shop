@@ -190,41 +190,31 @@ const nameInput = document.getElementById('nameInput');
 const addressInput = document.getElementById('addressInput');
 const phoneImput = document.getElementById('phoneImput');
 const cardNumber = document.getElementById('cardNumber');
-const cardMounth = document.getElementById('cardMounth');
+const cardMonth = document.getElementById('cardMonth');
 const cardYear = document.getElementById('cardYear');
 const cardCvv = document.getElementById('cardCvv');
 
 const my_order = document.querySelector('.my_order');
+const errorSpans = document.querySelectorAll('.error');
 
 let nameInputValue
 let addressInputValue
 let phoneImputValue
 let cardNumberValue
-let cardMounthValue
+let cardMonthValue
 let cardYearValue
 let cardCvvValue
 
 const usersInfo = [];
-payButton.disabled = true;
-payButton.classList.add("disabled");
 
 paymentForm.addEventListener('input', function () {
   nameInputValue = nameInput.value;
   addressInputValue = addressInput.value;
   phoneImputValue = phoneImput.value;
   cardNumberValue = cardNumber.value;
-  cardMounthValue = cardMounth.value;
+  cardMonthValue = cardMonth.value;
   cardYearValue = cardYear.value;
   cardCvvValue = cardCvv.value;
-
-  let allFieldsFilled = nameInputValue.trim() !== '' && addressInputValue.trim() !== '' && phoneImputValue.trim() !== '' && cardNumberValue.trim() !== '' && cardMounthValue.trim() !== '' && cardYearValue.trim() !== '' && cardCvvValue.trim() !== '';
-  payButton.disabled = !allFieldsFilled;
-  if (payButton.disabled) {
-    payButton.classList.add("disabled");
-  } else {
-    payButton.classList.remove("disabled");
-  }
-
 });
 
 payButton.addEventListener('click', () => {
@@ -233,7 +223,7 @@ payButton.addEventListener('click', () => {
     "address": addressInputValue,
     "phone": phoneImputValue,
     "card": cardNumberValue,
-    "mounth": cardMounthValue,
+    "month": cardMonthValue,
     "year": cardYearValue,
     "cvv": cardCvvValue,
   }
@@ -241,6 +231,10 @@ payButton.addEventListener('click', () => {
   console.log(usersInfo);
   carts.map((item, index) => {
     my_order.insertAdjacentHTML("beforeend", `<li>☕ ${listProducts[item.product_id - 1].name} - <span>${carts[index].quantity} pc.</span></li>`);
+  })
+
+  errorSpans.forEach((item) => {
+    item.innerHTML = '';
   })
 
 
@@ -256,13 +250,11 @@ payButton.addEventListener('click', () => {
     spinner.classList.add("visually-hidden");
     lastWindow.classList.remove("visually-hidden");
     paymentForm.classList.add('visually-hidden');
-    payButton.classList.add("disabled");
-    payButton.disabled = true;
     nameInput.value = ''
     addressInput.value = ''
     phoneImput.value = ''
     cardNumber.value = ''
-    cardMounth.value = ''
+    cardMonth.value = ''
     cardYear.value = ''
     cardCvv.value = ''
   }, 1000)

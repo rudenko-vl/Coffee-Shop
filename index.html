@@ -94,22 +94,44 @@
         </button>
         <form class="payment visually-hidden">
           <h1 class="payTitle">Personal Information</h1>
-          <label>Name and Surname</label>
-          <input type="text" placeholder="Elon Musk" class="payInput" id="nameInput">
-          <label>Phone Number</label>
-          <input type="tel" placeholder="+38 099 123 45 67" class="payInput" id="phoneImput">
-          <label>Address</label>
-          <input type="text" placeholder="Elton St 21 22-145" class="payInput" id="addressInput">
+          <div class="input-box">
+            <label>Name and Surname</label>
+            <input type="text" placeholder="Elon Musk" class="payInput" id="nameInput">
+            <span id="name-error" class="error"></span>
+          </div>
+          <div class="input-box">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+38 099 123 45 67" class="payInput" id="phoneImput">
+            <span id="phone-error" class="error"></span>
+          </div>
+          <div class="input-box">
+            <label>Address</label>
+            <input type="text" placeholder="Elton St 21 22-145" class="payInput" id="addressInput">
+            <span id="adsress-error" class="error"></span>
+          </div>
+
           <h1 class="payTitle">Card Information</h1>
           <div class="cardIcons">
             <img src="./images/visa.png" width="40" alt="" class="cardIcon">
             <img src="./images/master.png" alt="" width="40" class="cardIcon">
           </div>
-          <input type="password" class="payInput" placeholder="Card Number" id="cardNumber">
+          <div class="cardNumber-box">
+            <input type="text" class="payInput" placeholder="Card Number" id="cardNumber" maxlength="5">
+            <span id="cardNumber-error" class="error"></span>
+          </div>
           <div class="cardInfo">
-            <input type="text" placeholder="mm" class="payInput sm" id="cardMounth">
-            <input type="text" placeholder="yyyy" class="payInput sm" id="cardYear">
-            <input type="text" placeholder="cvv" class="payInput sm" id="cardCvv">
+            <div class="card-input">
+              <input type="text" placeholder="mm" class="payInput sm" id="cardMonth" maxlength="2">
+              <span id="cardMonth-error" class="error"></span>
+            </div>
+            <div class="card-input">
+              <input type="text" placeholder="yyyy" class="payInput sm" id="cardYear" maxlength="4">
+              <span id="cardYear-error" class="error"></span>
+            </div>
+            <div class="card-input">
+              <input type="password" placeholder="cvv" class="payInput sm" id="cardCvv" maxlength="3">
+              <span id="cardCvv-error" class="error"></span>
+            </div>
           </div>
           <button class="payButton" type="submit">Checkout!</button>
         </form>
@@ -287,6 +309,7 @@
 
   <script src="./js/main.js"></script>
   <script src="./js/openCart.js"></script>
+  <script src="./js/validations.js"></script>
 </body>
 
 </html>

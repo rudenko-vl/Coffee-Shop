@@ -977,6 +977,31 @@ header.shadow {
   box-shadow: 0px 0px 13px 2px rgba(0, 0, 0, 0.3);
 }
 
+.input-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box span {
+  position: absolute;
+  color: red;
+  top: 40px;
+  right: 0;
+  font-size: 14px;
+}
+
+@media screen and (min-width: 480px) {
+  .input-box span {
+    right: 15px;
+    font-size: 16px;
+  }
+}
+
+.input-box span i {
+  color: green;
+}
+
 .payTitle {
   font-size: 20px;
   color: lightgray;
@@ -1004,6 +1029,7 @@ label {
   color: rgb(163, 163, 163);
 }
 
+
 .cardIcons {
   display: flex;
 }
@@ -1016,6 +1042,67 @@ label {
 .cardInfo {
   display: flex;
   justify-content: space-between;
+}
+
+.cardInfo span {
+  color: red;
+}
+
+.card-input {
+  position: relative;
+}
+
+.card-input input {
+  width: 80%;
+}
+
+.card-input span {
+  position: absolute;
+  top: 55px;
+  right: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 720px) {
+  .card-input span {
+    top: 15px;
+    right: 15px;
+    font-size: 16px;
+  }
+}
+
+.card-input span i {
+  color: green;
+}
+
+.cardNumber-box {
+  position: relative;
+}
+
+.cardNumber-box span {
+  color: red;
+  position: absolute;
+  top: 10px;
+  right: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 480px) {
+  .cardNumber-box span {
+    right: 15px;
+    font-size: 16px;
+  }
+}
+
+.cardNumber-box span i {
+  color: green;
+
+}
+
+#cardNumber {
+  width: 100%;
 }
 
 .sm {
@@ -1031,8 +1118,14 @@ label {
   color: white;
   border: none;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 35px;
   transition: 0.5s;
+}
+
+@media screen and (min-width: 720px) {
+  .payButton {
+    margin-top: 20px;
+  }
 }
 
 .payButton:hover {
